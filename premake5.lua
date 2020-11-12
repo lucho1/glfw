@@ -42,6 +42,54 @@ project "GLFW"
 			"_GLFW_X11"
 		}
 
+		links
+		{
+			"dl",
+			"m",
+			"GL",
+			"GLU",
+			"X11",
+			"Xinerama",
+			"Xi",
+			"Xcursor",
+			"Xxf86vm",
+			"pthread"
+		}
+
+	filter "system:macosx"
+		pic "On"
+		systemversion "latest"
+		cppdialect "gnu++17"
+		staticruntime "On"
+		
+		files
+		{
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.h",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_platform.h",
+			"src/cocoa_time.c",
+			"src/cocoa_window.m"			
+			"src/posix_thread.c",
+			"src/nsgl_context.m ",
+			"src/egl_context.c ",
+			"src/osmesa_context.c"
+		}
+
+		defines
+		{
+			"_GLFW_COCOA"
+		}
+
+		links
+		{
+			"CoreFoundation.framework",
+			"Cocoa.framework",
+			"IOKit.framework",
+			"CoreVideo.framework"
+		}
+
 	filter "system:windows"
 		systemversion "latest"
 		staticruntime "On"
